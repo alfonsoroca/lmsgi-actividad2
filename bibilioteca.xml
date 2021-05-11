@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<documento>
+
+    <!-- Libros******************************************************************* -->
+
+    <libro Id="L1234" tipo_clase="novela" pags="750">
+        <titulo>La Biblia</titulo>
+        <capitulos>
+            <capitulo pags="185">
+                <titulo>Génesis</titulo>
+                <contenido url="www.l1234.es/genesis" />
+            </capitulo>
+            <capitulo pags="100">
+                <titulo>Éxodo</titulo>
+                <contenido url="www.l1234.es/exodo" />
+            </capitulo>
+        </capitulos>
+        <indice>1 Comienzo, 2 Continuación, 3 Final</indice>
+        <sinopsis>Érase una vez que nací cansado y no quería trabajar.....</sinopsis>
+    </libro>
+
+    <!-- Revistas***************************************************************** -->
+
+    <revista Id="R1234" tipo_clase="informática" pags="125">
+        <titulo>La Biblia</titulo>
+        <numero>14</numero>
+        <indice>1 Comienzo, 2 Continuación, 3 Final</indice>
+        <secciones>
+            <seccion pags="18">
+                <contenido url="www.r1234.es/seccion1" />
+            </seccion>
+            <seccion>
+                pags="13">
+                <contenido url="www.r1234.es/seccion2" />
+            </seccion>
+        </secciones>
+        <contenido url="www.r1234.es" />
+    </revista>
+
+    <!-- Periódicos*************************************************************** -->
+
+    <periodico Id="P1234" tipo_clase="nacional" fecha_publicacion="2021-05-11">
+        <secciones>
+            <seccion tipo_seccion="deportes">
+                <articulos>
+                    <articulo autor="Paco Roncero">Messi deja el Barsa</articulo>
+                    <articulo autor="Lamas">Madrid Campeón</articulo>
+                </articulos>
+            </seccion>
+            <seccion tipo_seccion="económica">
+                <articulos>
+                    <articulo autor="Montero">España en quiebra</articulo>
+                    <articulo autor="Escribá">Sin pensiones</articulo>
+                </articulos>
+            </seccion>
+        </secciones>
+        <indice>Deportes, Economía, Anuncios</indice>
+        <contenido url="www.p1234.es" />
+    </periodico>
+
+</documento>
