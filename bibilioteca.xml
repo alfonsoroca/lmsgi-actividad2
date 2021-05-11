@@ -24,16 +24,15 @@
     <!-- Revistas***************************************************************** -->
 
     <revista Id="R1234" tipo_clase="informática" pags="125">
-        <titulo>La Biblia</titulo>
+        <titulo>Micromanía</titulo>
         <numero>14</numero>
-        <indice>1 Comienzo, 2 Continuación, 3 Final</indice>
+        <indice>1 Mejores juegos, 2 Pokes, 3 Entrevistas</indice>
         <secciones>
             <seccion pags="18">
-                <contenido url="www.r1234.es/seccion1" />
+                <contenido url="www.r1234.es/mejoresjuegos" />
             </seccion>
-            <seccion>
-                pags="13">
-                <contenido url="www.r1234.es/seccion2" />
+            <seccion pags="13">
+                <contenido url="www.r1234.es/pokes" />
             </seccion>
         </secciones>
         <contenido url="www.r1234.es" />
