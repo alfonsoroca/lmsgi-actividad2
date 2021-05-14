@@ -1,62 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE documento [
+    <!-- Definimos la estructura de la etiqueta libro***************************** -->
+    <!ELEMENT documento (libro, revista, periodico)>
+    
+        <!-- Definimos la estructura de la etiqueta libro***************************** -->
+        <!ELEMENT libro (titulo_lib, capitulos, indice_lib, sinopsis_lib)>
+        <!ATTLIST libro id_lib ID #REQUIRED>
+        <!-- Definimos las opciones admitidas por el atributo-->
+        <!ATTLIST libro tipo_clase_lib (novela | infantil | didactico) #REQUIRED> 
+        <!ATTLIST libro pags_lib CDATA #REQUIRED>    
+            <!-- Definimos la estructura de la etiqueta titulo_lib-->
+            <!ELEMENT titulo_lib (#PCDATA)>    
+            <!-- Definimos la estructura de la etiqueta capitulos-->
+            <!ELEMENT capitulos (capitulo+)> <!-- Un libro puede tener 1 o más capítulos-->
+                <!-- Definimos la estructura de la etiqueta capitulo-->
+                <!ELEMENT capitulo (titulo_cap, contenido_cap)>
+                <!ATTLIST capitulo pags_cap CDATA #REQUIRED>
+                    <!-- Definimos la estructura de la etiqueta titulo_cap-->
+                    <!ELEMENT titulo_cap (#PCDATA)>    
+                    <!-- Definimos la estructura de la etiqueta contenido_cap-->
+                    <!ELEMENT contenido_cap EMPTY>
+                    <!ATTLIST contenido_cap url CDATA #REQUIRED>
+            <!-- Definimos la estructura de la etiqueta indice_lib-->
+            <!ELEMENT indice_lib (#PCDATA)>
+            <!-- Definimos la estructura de la etiqueta sinopsis_lib-->
+            <!ELEMENT sinopsis_lib (#PCDATA)>
 
+
+        <!-- Definimos la estructura de la etiqueta revista***************************** -->
+        <!ELEMENT revista (titulo_rev, numero, indice_rev, secciones_rev, contenido_rev)>
+        <!ATTLIST revista id_rev ID #REQUIRED>
+        <!-- Definimos las opciones admitidas por el atributo-->
+        <!ATTLIST revista tipo_clase_rev (informatica | corazon | coches | investigacion | otras) #REQUIRED>
+        <!ATTLIST revista pags_rev CDATA #REQUIRED>    
+            <!-- Definimos la estructura de la etiqueta titulo_rev-->
+            <!ELEMENT titulo_rev (#PCDATA)>
+            <!-- Definimos la estructura de la etiqueta numero-->
+            <!ELEMENT numero (#PCDATA)>
+            <!-- Definimos la estructura de la etiqueta indice_rev-->
+            <!ELEMENT indice_rev (#PCDATA)>
+            <!-- Definimos la estructura de la etiqueta secciones_rev-->
+            <!ELEMENT secciones_rev (seccion_rev+)> <!-- Una revista puede tener 1 o más secciones-->
+                <!-- Definimos la estructura de la etiqueta seccion_rev-->
+                <!ELEMENT seccion_rev (contenido_sec_rev)>
+                <!ATTLIST seccion_rev pags_sec CDATA #REQUIRED>
+                <!-- Definimos la estructura de la etiqueta contenido_sec_rev-->
+                <!ELEMENT contenido_sec_rev EMPTY>
+                <!ATTLIST contenido_sec_rev url CDATA #REQUIRED>
+            <!-- Definimos la estructura de la etiqueta contenido_rev-->
+            <!ELEMENT contenido_rev EMPTY>
+            <!ATTLIST contenido_rev url CDATA #REQUIRED>    
+        
+
+        <!-- Definimos la estructura de la etiqueta periodico***************************** -->
+        <!ELEMENT periodico (secciones_per, indice_per, contenido_per)>
+        <!ATTLIST periodico id_per ID #REQUIRED>
+        <!-- Definimos las opciones admitidas por el atributo-->
+        <!ATTLIST periodico tipo_clase_per (nacional | internacional) #REQUIRED>
+        <!ATTLIST periodico fecha_publicacion CDATA #REQUIRED>    
+            <!-- Definimos la estructura de la etiqueta secciones_per-->
+            <!ELEMENT secciones_per (seccion_per+)> <!-- Un periodico puede tener 1 o más secciones-->
+                <!-- Definimos la estructura de la etiqueta seccion_per-->
+                <!ELEMENT seccion_per (articulos)>
+                <!-- Definimos las opciones admitidas por el atributo-->
+                <!ATTLIST seccion_per tipo_seccion_per (economica | opinion | deportes | nacional | internacional) #REQUIRED>
+                    <!-- Definimos la estructura de la etiqueta articulos-->
+                    <!ELEMENT articulos (articulo+)> <!-- Los artículos pueden ser 1 o más -->
+                        <!-- Definimos la estructura de la etiqueta articulo-->
+                        <!ELEMENT articulo (#PCDATA)>
+                        <!ATTLIST articulo autor CDATA #REQUIRED>
+            <!-- Definimos la estructura de la etiqueta indice_per-->
+            <!ELEMENT indice_per (#PCDATA)>
+            <!-- Definimos la estructura de la etiqueta contenido_per-->
+            <!ELEMENT contenido_per EMPTY>
+            <!ATTLIST contenido_per url CDATA #REQUIRED>
+]>
 
 <documento>
 
     <!-- Libros******************************************************************* -->
 
-    <libro Id="L1234" tipo_clase="novela" pags="750">
-        <titulo>La Biblia</titulo>
+    <libro id_lib="L1234" tipo_clase_lib="novela" pags_lib="750">
+        <titulo_lib>La Biblia</titulo_lib>
         <capitulos>
-            <capitulo pags="185">
-                <titulo>Génesis</titulo>
-                <contenido url="www.l1234.es/genesis" />
+            <capitulo pags_cap="185">
+                <titulo_cap>Génesis</titulo_cap>
+                <contenido_cap url="www.l1234.es/genesis" />
             </capitulo>
-            <capitulo pags="100">
-                <titulo>Éxodo</titulo>
-                <contenido url="www.l1234.es/exodo" />
+            <capitulo pags_cap="100">
+                <titulo_cap>Éxodo</titulo_cap>
+                <contenido_cap url="www.l1234.es/exodo" />
             </capitulo>
         </capitulos>
-        <indice>1 Comienzo, 2 Continuación, 3 Final</indice>
-        <sinopsis>Érase una vez que nací cansado y no quería trabajar.....</sinopsis>
+        <indice_lib>1 Comienzo, 2 Continuación, 3 Final</indice_lib>
+        <sinopsis_lib>La historia del origen del hombre desde un punto de vista religioso</sinopsis_lib>
     </libro>
 
     <!-- Revistas***************************************************************** -->
 
-    <revista Id="R1234" tipo_clase="informática" pags="125">
-        <titulo>Micromanía</titulo>
+    <revista id_rev="R1234" tipo_clase_rev="informatica" pags_rev="125">
+        <titulo_rev>Micromanía</titulo_rev>
         <numero>14</numero>
-        <indice>1 Mejores juegos, 2 Pokes, 3 Entrevistas</indice>
-        <secciones>
-            <seccion pags="18">
-                <contenido url="www.r1234.es/mejoresjuegos" />
-            </seccion>
-            <seccion pags="13">
-                <contenido url="www.r1234.es/pokes" />
-            </seccion>
-        </secciones>
-        <contenido url="www.r1234.es" />
+        <indice_rev>1 Mejores juegos, 2 Pokes, 3 Entrevistas</indice_rev>
+        <secciones_rev>
+            <seccion_rev pags_sec="18">
+                <contenido_sec_rev url="www.r1234.es/mejoresjuegos" />
+            </seccion_rev>
+            <seccion_rev pags_sec="13">
+                <contenido_sec_rev url="www.r1234.es/pokes" />
+            </seccion_rev>
+        </secciones_rev>
+        <contenido_rev url="www.r1234.es" />
     </revista>
 
     <!-- Periódicos*************************************************************** -->
 
-    <periodico Id="P1234" tipo_clase="nacional" fecha_publicacion="2021-05-11">
-        <secciones>
-            <seccion tipo_seccion="deportes">
+    <periodico id_per="P1234" tipo_clase_per="nacional" fecha_publicacion="2021-05-11">
+        <secciones_per>
+            <seccion_per tipo_seccion_per="deportes">
                 <articulos>
                     <articulo autor="Paco Roncero">Messi deja el Barsa</articulo>
                     <articulo autor="Lamas">Madrid Campeón</articulo>
                 </articulos>
-            </seccion>
-            <seccion tipo_seccion="económica">
+            </seccion_per>
+            <seccion_per tipo_seccion_per="economica">
                 <articulos>
                     <articulo autor="Montero">España en quiebra</articulo>
                     <articulo autor="Escribá">Sin pensiones</articulo>
                 </articulos>
-            </seccion>
-        </secciones>
-        <indice>Deportes, Economía, Anuncios</indice>
-        <contenido url="www.p1234.es" />
+            </seccion_per>
+        </secciones_per>
+        <indice_per>Deportes, Economía, Anuncios</indice_per>
+        <contenido_per url="www.p1234.es" />
     </periodico>
 
 </documento>
