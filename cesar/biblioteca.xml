@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE biblioteca SYSTEM "DTD_biblioteca.dtd">
+<biblioteca>
+    <!-- Estructura Libro -->
+    <libros id="L" paginas_libro="245" tipo_libro="novela">
+        <titulo_libro> </titulo_libro>
+        <capitulo paginas_capitulo="23">
+            <titulo_capitulo></titulo_capitulo>
+            <contenido_capitulo url="www.libros.es"/>
+        </capitulo>
+        <capitulo paginas_capitulo="18">
+            <titulo_capitulo></titulo_capitulo>
+            <contenido_capitulo url="www.libros.es"/>
+        </capitulo>
+        <indice_libro></indice_libro>
+        <sinopsis_libro></sinopsis_libro>
+    </libros>
+
+    <!-- Estructura Revista -->
+    <revista id="R" tipo_revista="coches" paginas_revista="9">
+        <titulo_revista></titulo_revista>
+        <numero_revista></numero_revista>
+        <indice_revista>
+            <seccion_revista paginas_seccion="5">
+                <contenido_seccion_revista url="www.revistas-de-coches.es"/>
+            </seccion_revista>
+            <seccion_revista paginas_seccion="3">
+                <contenido_seccion_revista url="www.revistas-de-coches.es"/>
+            </seccion_revista>
+        </indice_revista>
+        <contenido_revista url="www.revistas-de-coches.es"/>
+    </revista>
+
+    <!-- Estructura Periodico -->
+    <periodicos id="P" tipo_periodico="nacional" fecha="15/05/2021">
+        <secciones_periodico tipo_seccion="deportes">
+            <seccion_periodico>
+                <articulos autor="cesar"></articulos>
+                <articulos autor="jose luis"></articulos>
+            </seccion_periodico>
+        </secciones_periodico>
+        <indice_periodico></indice_periodico>
+        <contenido_periodico></contenido_periodico>
+    </periodicos>
+</biblioteca>
