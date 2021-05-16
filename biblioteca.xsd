@@ -1,8 +1,16 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation>
+            Schema para la biblioteca de la Actividad 2
+        </xs:documentation>
+    </xs:annotation>
+    
+    <!-- NODO RAIZ - BIBLIOTECA -->
     <xs:element name="biblioteca">
         <xs:complexType>
             <xs:sequence>
+                <!-- NODO DOCUMENTOS (podrían existir otros nodos como empleados o inventario-->
                 <xs:element name="documentos">
                     <xs:complexType>
                         <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -34,10 +42,23 @@
                                         </xs:element>
                                     </xs:sequence>
                                     <!-- Los atributos se incluyen al final del complexType-->
-                                    <xs:attribute name="id" type="xs:string" use="required">
-                                        <!-- TODO: Añadir Expresion regular-->
+                                    <xs:attribute name="id" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:ID">
+                                                <!-- Validar el ID para LIBRO -->
+                                                <xs:pattern value="L[0-9]{4}"></xs:pattern>
+                                            </xs:restriction>
+                                        </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" type="xs:string" use="required"></xs:attribute>
+                                    <xs:attribute name="tipo_clase" use="required"> <!-- Al añadir una restricción hay que quitar el tipo de la declaración-->
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="novela"></xs:enumeration>
+                                                <xs:enumeration value="infantil"></xs:enumeration>
+                                                <xs:enumeration value="didactico"></xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attribute name="paginas" type="xs:int" use="required"></xs:attribute>
                                 </xs:complexType>
                             </xs:element>
@@ -74,10 +95,25 @@
                                         </xs:element>
                                     </xs:sequence>
                                     <!-- Los atributos se incluyen al final del complexType-->
-                                    <xs:attribute name="id" type="xs:string" use="required">
-                                        <!-- TODO: Añadir Expresion regular-->
+                                    <xs:attribute name="id" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:ID">
+                                                <!-- Validar el ID para REVISTA -->
+                                                <xs:pattern value="R[0-9]{4}"></xs:pattern>
+                                            </xs:restriction>
+                                        </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" type="xs:string" use="required"></xs:attribute>
+                                    <xs:attribute name="tipo_clase" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="informática"></xs:enumeration>
+                                                <xs:enumeration value="corazón"></xs:enumeration>
+                                                <xs:enumeration value="coches"></xs:enumeration>
+                                                <xs:enumeration value="investigación"></xs:enumeration>
+                                                <xs:enumeration value="otras"></xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attribute name="paginas" type="xs:int" use="required"></xs:attribute>
                                 </xs:complexType>
                             </xs:element>
@@ -105,7 +141,17 @@
                                                                     </xs:complexType>
                                                                 </xs:element>
                                                             </xs:sequence>
-                                                            <xs:attribute name="tipo_sec" type="xs:string" use="required"></xs:attribute>
+                                                            <xs:attribute name="tipo_sec" use="required">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:string">
+                                                                        <xs:enumeration value="económica"></xs:enumeration>
+                                                                        <xs:enumeration value="opinión"></xs:enumeration>
+                                                                        <xs:enumeration value="deportes"></xs:enumeration>
+                                                                        <xs:enumeration value="nacional"></xs:enumeration>
+                                                                        <xs:enumeration value="internacional"></xs:enumeration>
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
                                                         </xs:complexType>
                                                     </xs:element>
                                                 </xs:sequence>
@@ -120,10 +166,22 @@
                                         </xs:element>
                                     </xs:sequence>
                                     <!-- Los atributos se incluyen al final del complexType-->
-                                    <xs:attribute name="id" type="xs:string" use="required">
-                                        <!-- TODO: Añadir Expresion regular-->
+                                    <xs:attribute name="id" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:ID">
+                                                <!-- Validar el ID para PERIODICO -->
+                                                <xs:pattern value="P[0-9]{4}"></xs:pattern>
+                                            </xs:restriction>
+                                        </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="tipo_clase" type="xs:string" use="required"></xs:attribute>
+                                    <xs:attribute name="tipo_clase" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="nacional"></xs:enumeration>
+                                                <xs:enumeration value="internacional"></xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <!-- La fecha tiene el formato yyyy-mm-dd -->
                                     <xs:attribute name="fecha" type="xs:date" use="required"></xs:attribute> 
                                 </xs:complexType>
