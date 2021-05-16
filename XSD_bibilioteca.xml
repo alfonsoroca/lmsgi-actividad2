@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <documento xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="XSD_biblioteca.xsd">
 
     <!-- Libros******************************************************************* -->
@@ -10,11 +8,11 @@
         <capitulos>
             <capitulo pags_cap="185">
                 <titulo_cap>Génesis</titulo_cap>
-                <contenido_cap url="www.l1234.es/genesis" />
+                <contenido_cap url="http://www.l1234.es/genesis" />
             </capitulo>
             <capitulo pags_cap="100">
                 <titulo_cap>Éxodo</titulo_cap>
-                <contenido_cap url="www.l1234.es/exodo" />
+                <contenido_cap url="http://www.l1234.es/exodo" />
             </capitulo>
         </capitulos>
         <indice_lib>1 Comienzo, 2 Continuación, 3 Final</indice_lib>
@@ -27,36 +25,28 @@
         <titulo_rev>Micromanía</titulo_rev>
         <numero>14</numero>
         <indice_rev>1 Mejores juegos, 2 Pokes, 3 Entrevistas</indice_rev>
-        <secciones_rev>
-            <seccion_rev pags_sec="18">
-                <contenido_sec_rev url="www.r1234.es/mejoresjuegos" />
-            </seccion_rev>
-            <seccion_rev pags_sec="13">
-                <contenido_sec_rev url="www.r1234.es/pokes" />
-            </seccion_rev>
-        </secciones_rev>
-        <contenido_rev url="www.r1234.es" />
+        <seccion_rev pags_sec="18">
+                <contenido_sec_rev url="http://www.r1234.es/mejoresjuegos" />
+        </seccion_rev>
+        <seccion_rev pags_sec="13">
+                <contenido_sec_rev url="http://www.r1234.es/pokes" />
+        </seccion_rev>
+        <contenido_rev url="http://www.r1234.es" />
     </revista>
 
     <!-- Periódicos*************************************************************** -->
 
-    <periodico id_per="P1234" tipo_clase_per="nacional" fecha_publicacion="2021-05-11">
-        <secciones_per>
-            <seccion_per tipo_seccion_per="deportes">
-                <articulos>
-                    <articulo autor="Paco Roncero">Messi deja el Barsa</articulo>
-                    <articulo autor="Lamas">Madrid Campeón</articulo>
-                </articulos>
-            </seccion_per>
-            <seccion_per tipo_seccion_per="economica">
-                <articulos>
-                    <articulo autor="Montero">España en quiebra</articulo>
-                    <articulo autor="Escribá">Sin pensiones</articulo>
-                </articulos>
-            </seccion_per>
-        </secciones_per>
+    <periodico id_per="P1234" tipo_clase_per="nacional" fecha_publicacion="2021-05-11">        
+        <seccion_per tipo_seccion_per="deportes">                
+            <articulo autor="Paco Roncero">Messi deja el Barsa</articulo>
+            <articulo autor="Lamas">Madrid Campeón</articulo>                
+        </seccion_per>
+        <seccion_per tipo_seccion_per="economica">                
+                <articulo autor="Montero">España en quiebra</articulo>
+                <articulo autor="Escribá">Sin pensiones</articulo>                
+        </seccion_per>
         <indice_per>Deportes, Economía, Anuncios</indice_per>
-        <contenido_per url="www.p1234.es" />
+        <contenido_per url="http://www.p1234.es" />
     </periodico>
 
 </documento>

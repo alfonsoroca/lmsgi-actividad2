@@ -2,9 +2,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="documento">
         <xs:complexType>
-            <xs:all> <!-- Definimos el orden de los elementos de tal manera que no importe el orden en que aparecen, ni su ocurrencia-->
+            <xs:choice minOccurs="0" maxOccurs="unbounded"> <!-- Definimos el orden de los elementos de tal manera que no importe el orden en que aparecen, ni su ocurrencia-->
                 <!-- Definimos la estructura de la etiqueta libro y la hacemos opcional por si el XML no tuviese etiquetas libro -->
-                <xs:element name="libro" minOccurs="0">
+                <xs:element name="libro" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="titulo_lib" type="xs:string" />
@@ -17,7 +17,14 @@
                                                     <xs:element name="titulo_cap" type="xs:string" />
                                                     <xs:element name="contenido_cap">
                                                         <xs:complexType>
-                                                            <xs:attribute name="url" type="xs:string" use="required" />
+                                                            <!-- Validamos el contenido del atributo -->
+                                                            <xs:attribute name="url" use="required">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:anyURI">
+                                                                        <xs:pattern value="(http|https)://www\..*" />
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
                                                         </xs:complexType>
                                                     </xs:element>
                                                 </xs:sequence>
@@ -41,7 +48,7 @@
                         <!-- Validamos el contenido del atributo -->
                         <xs:attribute name="id_lib" use="required">
                             <xs:simpleType>
-                                <xs:restriction base="xs:string">
+                                <xs:restriction base="xs:ID">
                                     <xs:pattern value="L[0-9]{4}" />
                                 </xs:restriction>
                             </xs:simpleType>
@@ -69,48 +76,56 @@
                 </xs:element>
 
                 <!-- Definimos la estructura de la etiqueta revista y la hacemos opcional por si el XML no tuviese etiquetas revista -->
-                <xs:element name="revista" minOccurs="0">
+                <xs:element name="revista" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="titulo_rev" type="xs:string" />
                             <xs:element name="numero" type="xs:integer" />
-                            <xs:element name="indice_rev" type="xs:string"/>
-                            <xs:element name="secciones_rev">
+                            <xs:element name="indice_rev" type="xs:string"/>                            
+                            <xs:element name="seccion_rev" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="seccion_rev" maxOccurs="unbounded">
+                                        <xs:element name="contenido_sec_rev">
                                             <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name="contenido_sec_rev">
-                                                        <xs:complexType>
-                                                            <xs:attribute name="url" type="xs:string" use="required" />
-                                                        </xs:complexType>
-                                                    </xs:element>
-                                                </xs:sequence>
                                                 <!-- Validamos el contenido del atributo -->
-                                                <xs:attribute name="pags_sec" use="required">
+                                                <xs:attribute name="url" use="required">
                                                     <xs:simpleType>
-                                                        <xs:restriction base="xs:integer">
-                                                            <xs:minInclusive value="1" />
-                                                            <xs:maxInclusive value="9999" />
+                                                        <xs:restriction base="xs:anyURI">
+                                                            <xs:pattern value="(http|https)://www\..*" />
                                                         </xs:restriction>
                                                     </xs:simpleType>
                                                 </xs:attribute>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
+                                    <!-- Validamos el contenido del atributo -->
+                                    <xs:attribute name="pags_sec" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:integer">
+                                                <xs:minInclusive value="1" />
+                                                <xs:maxInclusive value="9999" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="contenido_rev">
                                 <xs:complexType>
-                                    <xs:attribute name="url" type="xs:string" use="required" />
+                                    <!-- Validamos el contenido del atributo -->
+                                    <xs:attribute name="url" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:anyURI">
+                                                <xs:pattern value="(http|https)://www\..*" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
                         <!-- Validamos el contenido del atributo -->
                         <xs:attribute name="id_rev" use="required">
                             <xs:simpleType>
-                                <xs:restriction base="xs:string">
+                                <xs:restriction base="xs:ID">
                                     <xs:pattern value="R[0-9]{4}" />
                                 </xs:restriction>
                             </xs:simpleType>
@@ -140,59 +155,54 @@
                 </xs:element>
 
                 <!-- Definimos la estructura de la etiqueta periodico y la hacemos opcional por si el XML no tuviese etiquetas periodico -->
-                <xs:element name="periodico">
+                <xs:element name="periodico" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="secciones_per" maxOccurs="unbounded">
+                            <xs:element name="seccion_per" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="seccion_per" maxOccurs="unbounded">
+                                    <xs:sequence>                                                   
+                                        <xs:element name="articulo" maxOccurs="unbounded">
                                             <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name="articulos">
-                                                        <xs:complexType>
-                                                            <xs:sequence>
-                                                                <xs:element name="articulo" maxOccurs="unbounded">
-                                                                    <xs:complexType>
-                                                                        <xs:simpleContent>
-                                                                            <xs:extension base="xs:string">
-                                                                                <xs:attribute name="autor" type="xs:string" use="required" />
-                                                                            </xs:extension>
-                                                                        </xs:simpleContent>
-                                                                    </xs:complexType>
-                                                                </xs:element>
-                                                            </xs:sequence>
-                                                        </xs:complexType>
-                                                    </xs:element>
-                                                </xs:sequence>
-                                                <xs:attribute name="tipo_seccion_per" use="required">
-                                                    <!-- Validamos el contenido del atributo -->
-                                                    <xs:simpleType>
-                                                        <xs:restriction base="xs:string">
-                                                            <xs:enumeration value="economica" />
-                                                            <xs:enumeration value="opinion" />
-                                                            <xs:enumeration value="deportes" />
-                                                            <xs:enumeration value="nacional" />
-                                                            <xs:enumeration value="internacional" />
-                                                        </xs:restriction>
-                                                    </xs:simpleType>
-                                                </xs:attribute>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute name="autor" type="xs:string" use="required" />
+                                                    </xs:extension>
+                                                </xs:simpleContent>
                                             </xs:complexType>
-                                        </xs:element>                                        
+                                        </xs:element>
                                     </xs:sequence>
+                                    <xs:attribute name="tipo_seccion_per" use="required">
+                                        <!-- Validamos el contenido del atributo -->
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="economica" />
+                                                <xs:enumeration value="opinion" />
+                                                <xs:enumeration value="deportes" />
+                                                <xs:enumeration value="nacional" />
+                                                <xs:enumeration value="internacional" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="indice_per" type="xs:string" />
                             <xs:element name="contenido_per">
                                 <xs:complexType>
-                                    <xs:attribute name="url" type="xs:string" use="required" />
+                                    <!-- Validamos el contenido del atributo -->
+                                    <xs:attribute name="url" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:anyURI">
+                                                <xs:pattern value="(http|https)://www\..*" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
                         <xs:attribute name="id_per" use="required">
                             <!-- Validamos el contenido del atributo -->
                             <xs:simpleType>
-                                <xs:restriction base="xs:string">                                    
+                                <xs:restriction base="xs:ID">                                    
                                     <xs:pattern value="P[0-9]{4}"></xs:pattern>
                                 </xs:restriction>
                             </xs:simpleType>
@@ -209,7 +219,7 @@
                         <xs:attribute name="fecha_publicacion" type="xs:date" use="required" />
                     </xs:complexType>
                 </xs:element>
-            </xs:all>
+            </xs:choice>
         </xs:complexType>
     </xs:element>
 </xs:schema>
