@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE documento [
-    <!-- Definimos la estructura de la etiqueta libro***************************** -->
-    <!ELEMENT documento (libro, revista, periodico)>
+    <!-- Definimos la estructura de la etiqueta documento permitiendo la opcionalidad de sus componentes -->
+    <!ELEMENT documento (libro?, revista?, periodico?)>
     
         <!-- Definimos la estructura de la etiqueta libro***************************** -->
         <!ELEMENT libro (titulo_lib, capitulos, indice_lib, sinopsis_lib)>
