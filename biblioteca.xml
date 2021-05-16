@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML Actividad 2 LMSGI - Biblioteca -->
+
+<!DOCTYPE biblioteca [
+    <!ELEMENT biblioteca (documentos)>
+    
+    <!ELEMENT documentos (libro*,revista*,periodico*)>
+    <!-- DOCUMENTOS -->
+    <!-- Comunes a todos -->
+    <!ELEMENT titulo (#PCDATA)>
+    <!ELEMENT indice (#PCDATA)>
+    <!ELEMENT contenido (EMPTY)>
+    <!ATTLIST contenido url CDATA >
+    <!-- LIBRO -->
+    <!ELEMENT libro (titulo, capitulo+, indice, sinopsis, contenido)>
+    <!ATTLIST libro 
+        id ID #REQUIRED
+        tipo_clase (novela | infantil | didactico) #REQUIRED
+        paginas CDATA #REQUIRED
+    >
+      
+    <!ELEMENT capitulo (titulo, contenido)>
+    <!ATTLIST capitulo paginas CDATA #REQUIRED> 
+        
+    <!ELEMENT sinopsis (#PCDATA)>
+    
+    
+    <!-- REVISTA -->
+    <!ELEMENT revista (titulo, numero, indice, secciones, contenido)>
+    <!ATTLIST revista 
+        id ID #REQUIRED
+        tipo_clase (informática | corazón | coches | investigación | otras) #REQUIRED
+        paginas CDATA #REQUIRED
+    >
+    <!ELEMENT secciones (seccion+)>
+    <!ELEMENT seccion (contenido)>
+    <!ATTLIST seccion paginas CDATA #REQUIRED>
+
+    <!-- PERIODICO -->
+    <!ELEMENT periodico (secciones, indice, contenido)>
+    <!ATTLIST periodico 
+        id ID #REQUIRED
+        tipo_clase (nacional | internacional) #REQUIRED
+        fecha CDATA #REQUIRED
+    >
+
+    <!ELEMENT seccionp (contenido)>
+    <!ATTLIST seccion tipo_sec (económica | opinión | deportes | nacional | internacional) #REQUIRED>
+]>
+
+
+<biblioteca>
+    <documentos>
+
+        <!-- LIBRO -->
+        <libro id="L0001", tipo_clase="novela", paginas="100">
+            <titulo>El libro gordo de Petete</titulo>
+            <capitulo paginas="50">
+                <titulo>Capitulo 1</titulo>
+                <contenido url="www.contenido.es/id=L0001/cap1"></contenido>
+            </capitulo>
+            <capitulo paginas="50">
+                <titulo>Capitulo 2</titulo>
+                <contenido url="www.contenido.es/id=L0001/cap2"></contenido>
+            </capitulo>
+            <indice>
+                <![CDATA[
+                    Inicio.............1
+                    Final..............2
+                ]]>
+            </indice>
+            <sinopsis>Un libraco gordo</sinopsis>
+            <contenido url="www.contenido.es/id=L0001"></contenido>
+        </libro>
+
+        <!-- REVISTA -->
+        <revista id="R0001", tipo_clase="corazón", paginas="30">
+            <titulo>Moneda y Timbre</titulo>
+            <numero>654</numero>
+            <indice>
+                <![CDATA[
+                    Inicio.............1
+                    Final..............2
+                ]]>
+            </indice>
+            <secciones>
+                <seccion paginas="12">
+                    <conenido url="www.contenido.es/id=R0001/sec01"></conenido>
+                </seccion>
+                <seccion paginas="13">
+                    <conenido url="www.contenido.es/id=R0001/sec02"></conenido>
+                </seccion>
+            </secciones>
+            <contenido url="www.contenido.es/id=R0001"></contenido>
+        </revista>
+
+        <!-- PERIODICO -->
+        <periodico id="P0001", tipo_clase="nacional", fecha="21/11/1990">
+            <secciones>
+                <seccion tipo_sec="económica">
+                    <articulo autor="Pedro">
+                        <contenido url="www.contenido.es/id=P0001/economica"></contenido>
+                    </articulo>
+                </seccion>
+                <seccion tipo_sec="opinión">
+                    <articulo autor="Juan">
+                        <contenido url="www.contenido.es/id=P0001/opinion"></contenido>
+                    </articulo>
+                </seccion>
+                <seccion tipo_sec="deportes">
+                    <articulo autor="Pablo">
+                        <contenido url="www.contenido.es/id=P0001/deportes"></contenido>
+                    </articulo>
+                </seccion>
+                <seccion tipo_sec="nacional">
+                    <articulo autor="Sonia">
+                        <contenido url="www.contenido.es/id=P0001/nacional"></contenido>
+                    </articulo>
+                </seccion>
+                <seccion tipo_sec="internacional">
+                    <articulo autor="Jana">
+                        <contenido url="www.contenido.es/id=P0001/internaciona"></contenido>
+                    </articulo>
+                </seccion>
+            </secciones>
+            <indice>
+                <![CDATA[
+                    Inicio.............1
+                    Final..............2
+                ]]>
+            </indice>
+            <contenido url="www.contenido.es/id=P0001"></contenido>
+        </periodico>
+
+    </documentos>  
+
+</biblioteca>
+
+económica | opinión | deportes | nacional | internacional
