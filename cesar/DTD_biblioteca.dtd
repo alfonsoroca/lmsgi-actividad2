@@ -1,4 +1,4 @@
-<!ELEMENT biblioteca (libros, revista, periodicos)>
+<!ELEMENT biblioteca (libros*, revista*, periodicos*)>
 
 <!-- ====================================Definicion de Elementos Libro ============================-->
 <!ELEMENT libros (titulo_libro, capitulo+, indice_libro, sinopsis_libro)>
@@ -9,7 +9,7 @@
 <!ELEMENT indice_libro (#PCDATA)>
 <!ELEMENT sinopsis_libro (#PCDATA)>
 <!-- Definicion de Atributos Libros-->
-<!ATTLIST libros id (L) #REQUIRED>
+<!ATTLIST libros id ID #REQUIRED>
 <!ATTLIST libros paginas_libro CDATA #REQUIRED>
 <!ATTLIST libros tipo_libro (novela | infantil | didactico) #REQUIRED>
 <!ATTLIST capitulo paginas_capitulo CDATA #REQUIRED>
@@ -24,7 +24,7 @@
 <!ELEMENT contenido_seccion_revista EMPTY>
 <!ELEMENT contenido_revista EMPTY>
 <!-- Definicion de Atributos Revistas-->
-<!ATTLIST revista id (R) #REQUIRED>
+<!ATTLIST revista id ID #REQUIRED>
 <!ATTLIST revista tipo_revista (informatica | corazon | coches | investigacion | otras) #REQUIRED>
 <!ATTLIST revista paginas_revista CDATA #REQUIRED>
 <!ATTLIST seccion_revista paginas_seccion CDATA #REQUIRED>
@@ -39,7 +39,7 @@
 <!ELEMENT indice_periodico (#PCDATA)>
 <!ELEMENT contenido_periodico (#PCDATA)>
 <!-- Definicion de Atributos Periodicos-->
-<!ATTLIST periodicos id (P) #REQUIRED>
+<!ATTLIST periodicos id ID #REQUIRED>
 <!ATTLIST periodicos tipo_periodico (nacional | internacional) #REQUIRED>
 <!ATTLIST periodicos fecha CDATA #REQUIRED>
 <!ATTLIST secciones_periodico tipo_seccion (economica | opinion | deportes | nacional | internacional) #REQUIRED>

@@ -3,18 +3,24 @@
 
     <element name="biblioteca2">
         <complexType>
-            <sequence>          <!-- Estructura Libro -->
-                <element name="libros">
+            <choice minOccurs="0" maxOccurs="unbounded">          <!-- Estructura Libro -->
+                <element name="libros" minOccurs="0" maxOccurs="unbounded">
                     <complexType>
                         <sequence>
                             <element name="titulo_libro" type="string"/>
-                            <element name="capitulo" minOccurs="0" maxOccurs="unbounded">
+                            <element name="capitulo" maxOccurs="unbounded">
                                 <complexType>
                                     <sequence>
                                         <element name="titulo_capitulo" type="string"/>
                                         <element name="contenido_capitulo">
                                             <complexType>
-                                                <attribute name="url" type="string" use="required"></attribute>
+                                                <attribute name="url"  use="required">
+                                                    <simpleType>
+                                                        <restriction base="anyURI">
+                                                            <pattern value="http://www.*"/>
+                                                        </restriction>
+                                                    </simpleType>
+                                                </attribute>
                                             </complexType>
                                         </element>
                                     </sequence>
@@ -26,12 +32,12 @@
                         </sequence>
                         <attribute name="id"  use="required">
                             <simpleType>
-                                <restriction base="string">
+                                <restriction base="ID">
                                     <pattern value="L[0-9]{4}"/>
                                 </restriction>
                             </simpleType>
                         </attribute>
-                        <attribute name="paginas_libro" type="integer" use="required"></attribute>
+                        <attribute name="paginas_libro" type="integer" use="required"/>
                         <attribute name="tipo_libro" use="required" >
                             <simpleType>
                                 <restriction base="string">
@@ -44,7 +50,7 @@
                     </complexType>
                 </element>
                             <!-- Estructura Revista -->
-                <element name="revista">
+                <element name="revista" minOccurs="0" maxOccurs="unbounded">
                     <complexType>
                         <sequence>
                             <element name="titulo_revista"></element>
@@ -52,16 +58,22 @@
                             <element name="indice_revista">
                                 <complexType>
                                     <sequence>
-                                        <element name="seccion_revista" minOccurs="1" maxOccurs="unbounded">
+                                        <element name="seccion_revista"  maxOccurs="unbounded">
                                             <complexType>
                                                 <sequence>
                                                     <element name="contenido_seccion_revista">
                                                         <complexType>
-                                                            <attribute name="url" type="string" use="required"></attribute>
+                                                            <attribute name="url"  use="required">
+                                                                <simpleType>
+                                                                    <restriction base="anyURI">
+                                                                        <pattern value="http://www.*"></pattern>
+                                                                    </restriction>
+                                                                </simpleType>
+                                                            </attribute>
                                                         </complexType>
                                                     </element>
                                                 </sequence>
-                                                <attribute name="paginas_seccion" type="integer" use="required" ></attribute>
+                                                <attribute name="paginas_seccion" type="integer" use="required" />
                                             </complexType>
                                         </element>
                                     </sequence>         
@@ -69,13 +81,19 @@
                             </element>
                             <element name="contenido_revista">
                                 <complexType>
-                                    <attribute name="url" type="string" use="required"></attribute>
+                                    <attribute name="url"  use="required">
+                                        <simpleType>
+                                            <restriction base="anyURI">
+                                                <pattern value="http://www.*"/>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
                                 </complexType>
                             </element>
                         </sequence>
                     <attribute name="id" use="required">
                         <simpleType>
-                            <restriction base="string">
+                            <restriction base="ID">
                                 <pattern value="R[0-9]{4}"/>
                             </restriction>
                         </simpleType>
@@ -83,11 +101,11 @@
                     <attribute name="tipo_revista" use="required" >
                         <simpleType>
                             <restriction base="string">
-                                <enumeration value="informatica"></enumeration>
-                                <enumeration value="corazon"></enumeration>
-                                <enumeration value="coches"></enumeration>
-                                <enumeration value="investigacion"></enumeration>
-                                <enumeration value="otras"></enumeration>
+                                <enumeration value="informatica"/>
+                                <enumeration value="corazon"/>
+                                <enumeration value="coches"/>
+                                <enumeration value="investigacion"/>
+                                <enumeration value="otras"/>
                             </restriction>
                         </simpleType>
                     </attribute>
@@ -96,25 +114,21 @@
                 </element>
 
                             <!-- Estructura Periodico -->
-                <element name="periodicos">
+                <element name="periodicos" minOccurs="0" maxOccurs="unbounded">
                     <complexType>
                         <sequence>
                             <element name="secciones_periodico">
                                 <complexType>
-                                    <sequence>
-                                        <element name="seccion_periodico">
+                                    <sequence>                                       
+                                        <element name="articulos"  maxOccurs="unbounded">
                                             <complexType>
-                                                <sequence>
-                                                    <element name="articulos"  minOccurs="1"  maxOccurs="unbounded">
-                                                        <complexType>
-                                                          
-                                                            <attribute name="autor" type="string" use="required"></attribute>
-                                                        </complexType>
-                                                    </element>
-                                                </sequence>
-                                                
+                                                <simpleContent>
+                                                    <extension base="string">
+                                                        <attribute name="autor" type="string" use="required"/>
+                                                    </extension>
+                                                </simpleContent>                                                     
                                             </complexType>
-                                        </element>
+                                        </element>           
                                     </sequence>
                                     <attribute name="tipo_seccion" use="required">
                                         <simpleType>
@@ -132,13 +146,19 @@
                             <element name="indice_periodico"></element>
                             <element name="contenido_periodico">
                                 <complexType>
-                                    <attribute name="url" type="string" use="required"></attribute>
+                                    <attribute name="url" use="required">
+                                        <simpleType>
+                                            <restriction base="anyURI">
+                                                <pattern value="http://www.*"/>
+                                            </restriction>
+                                        </simpleType>
+                                    </attribute>
                                 </complexType>
                             </element>
                         </sequence>
                         <attribute name="id" use="required">
                             <simpleType>
-                                <restriction base="string">
+                                <restriction base="ID">
                                     <pattern value="P[0-9]{4}"/>
                                 </restriction>
                             </simpleType>
@@ -154,7 +174,7 @@
                         <attribute name="fecha" type="date" use="required"></attribute>
                     </complexType>
                 </element>
-            </sequence>          
+            </choice>          
         </complexType>
     </element>
 </schema>

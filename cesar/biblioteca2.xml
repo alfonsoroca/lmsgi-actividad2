@@ -5,11 +5,11 @@
         <titulo_libro>Don Quijote </titulo_libro>
         <capitulo paginas_capitulo="23">
             <titulo_capitulo>caapitulo 1</titulo_capitulo>
-            <contenido_capitulo url="www.libros.es"/>
+            <contenido_capitulo url="http://www.libros.es"/>
         </capitulo>
         <capitulo paginas_capitulo="18">
             <titulo_capitulo>capitulo 2</titulo_capitulo>
-            <contenido_capitulo url="www.libros.es"/>
+            <contenido_capitulo url="http://www.libros.es"/>
         </capitulo>
         <indice_libro> Aqui se encuentra el indice del libro</indice_libro>
         <sinopsis_libro>Aqui se encuentra la sinopsis del libro</sinopsis_libro>
@@ -21,24 +21,22 @@
         <numero_revista>23</numero_revista>
         <indice_revista>
             <seccion_revista paginas_seccion="5">
-                <contenido_seccion_revista url="www.revistas-de-coches.es"/>
+                <contenido_seccion_revista url="http://www.revistas-de-coches.es"/>
             </seccion_revista>
             <seccion_revista paginas_seccion="3">
-                <contenido_seccion_revista url="www.revistas-de-coches.es"/>
+                <contenido_seccion_revista url="http://www.revistas-de-coches.es"/>
             </seccion_revista>
         </indice_revista>
-        <contenido_revista url="www.revistas-de-coches.es"/>
+        <contenido_revista url="http://www.revistas-de-coches.es"/>
     </revista>
 
     <!-- Estructura Periodico -->
     <periodicos id="P1234" tipo_periodico="nacional" fecha="2021-05-15">
-        <secciones_periodico tipo_seccion="deportes">
-            <seccion_periodico>
-                <articulos autor="cesar"></articulos>
-                <articulos autor="jose luis"></articulos>
-            </seccion_periodico>
+        <secciones_periodico tipo_seccion="deportes">           
+            <articulos autor="cesar">asd</articulos>
+            <articulos autor="jose luis">asdf</articulos>
         </secciones_periodico>
         <indice_periodico>Aqui se encuentra el indice del periodico</indice_periodico>
-        <contenido_periodico url="www.periodico.es"></contenido_periodico>
+        <contenido_periodico url="http://www.periodico.es"></contenido_periodico>
     </periodicos>
 </biblioteca2>

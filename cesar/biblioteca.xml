@@ -2,7 +2,7 @@
 <!DOCTYPE biblioteca SYSTEM "DTD_biblioteca.dtd">
 <biblioteca>
     <!-- Estructura Libro -->
-    <libros id="L" paginas_libro="245" tipo_libro="novela">
+    <libros id="L1232" paginas_libro="245" tipo_libro="novela">
         <titulo_libro> </titulo_libro>
         <capitulo paginas_capitulo="23">
             <titulo_capitulo></titulo_capitulo>
@@ -17,7 +17,7 @@
     </libros>
 
     <!-- Estructura Revista -->
-    <revista id="R" tipo_revista="coches" paginas_revista="9">
+    <revista id="R5421" tipo_revista="coches" paginas_revista="9">
         <titulo_revista></titulo_revista>
         <numero_revista></numero_revista>
         <indice_revista>
@@ -32,7 +32,7 @@
     </revista>
 
     <!-- Estructura Periodico -->
-    <periodicos id="P" tipo_periodico="nacional" fecha="15/05/2021">
+    <periodicos id="P2543" tipo_periodico="nacional" fecha="15/05/2021">
         <secciones_periodico tipo_seccion="deportes">
             <seccion_periodico>
                 <articulos autor="cesar"></articulos>
