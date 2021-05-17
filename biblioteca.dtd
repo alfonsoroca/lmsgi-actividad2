@@ -8,7 +8,9 @@
     <!ELEMENT indice (#PCDATA)>
     <!ELEMENT contenido EMPTY>
     <!ATTLIST contenido url CDATA #REQUIRED>
-    <!ELEMENT secciones (seccionr+ | seccionp+)>
+    <!ELEMENT secciones (seccionr+ | seccionp+)> <!-- Tenemos secciones para periodico o para revista -->
+    <!-- NOTA: En DTD no tenemos forma de impedir que se incluyan seccionesp dentro de una revista o viceversa -->
+    <!-- En la solución final se ha eliminado este nodo y se han usado diferentes secciones para cada elemento -->
 
     <!-- LIBRO -->
     <!ELEMENT libro (titulo, capitulo+, indice, sinopsis, contenido)>

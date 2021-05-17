@@ -11,7 +11,9 @@
     <!ELEMENT indice (#PCDATA)>
     <!ELEMENT contenido EMPTY>
     <!ATTLIST contenido url CDATA #REQUIRED>
-    <!ELEMENT secciones (seccionr+ | seccionp+)>
+    <!ELEMENT secciones (seccionr+ | seccionp+)> <!-- Tenemos secciones para periodico o para revista -->
+    <!-- NOTA: En DTD no tenemos forma de impedir que se incluyan seccionesp dentro de una revista o viceversa -->
+    <!-- En la solución final se ha eliminado este nodo y se han usado diferentes secciones para cada elemento -->
 
     <!-- LIBRO -->
     <!ELEMENT libro (titulo, capitulo+, indice, sinopsis, contenido)>
@@ -62,11 +64,11 @@
             <titulo>El libro gordo de Petete</titulo>
             <capitulo paginas="50">
                 <titulo>Capitulo 1</titulo>
-                <contenido url="www.contenido.es/id=L0001/cap1"></contenido>
+                <contenido url="http://www.contenido.es/id=L0001/cap1"></contenido>
             </capitulo>
             <capitulo paginas="50">
                 <titulo>Capitulo 2</titulo>
-                <contenido url="www.contenido.es/id=L0001/cap2"></contenido>
+                <contenido url="http://www.contenido.es/id=L0001/cap2"></contenido>
             </capitulo>
             <indice>
                 <![CDATA[
@@ -75,7 +77,7 @@
                 ]]>
             </indice>
             <sinopsis>Un libraco gordo</sinopsis>
-            <contenido url="www.contenido.es/id=L0001"></contenido>
+            <contenido url="http://www.contenido.es/id=L0001"></contenido>
         </libro>
 
         <!-- REVISTA -->
@@ -90,13 +92,13 @@
             </indice>
             <secciones>
                 <seccionr paginas="12">
-                    <contenido url="www.contenido.es/id=R0001/sec01"></contenido>
+                    <contenido url="http://www.contenido.es/id=R0001/sec01"></contenido>
                 </seccionr>
                 <seccionr paginas="13">
-                    <contenido url="www.contenido.es/id=R0001/sec02"></contenido>
+                    <contenido url="http://www.contenido.es/id=R0001/sec02"></contenido>
                 </seccionr>
             </secciones>
-            <contenido url="www.contenido.es/id=R0001"></contenido>
+            <contenido url="http://www.contenido.es/id=R0001"></contenido>
         </revista>
 
         <!-- PERIODICO -->
@@ -104,27 +106,27 @@
             <secciones>
                 <seccionp tipo_sec="económica">
                     <articulo autor="Pedro">
-                        <contenido url="www.contenido.es/id=P0001/economica"></contenido>
+                        <contenido url="http://www.contenido.es/id=P0001/economica"></contenido>
                     </articulo>
                 </seccionp>
                 <seccionp tipo_sec="opinión">
                     <articulo autor="Juan">
-                        <contenido url="www.contenido.es/id=P0001/opinion"></contenido>
+                        <contenido url="http://www.contenido.es/id=P0001/opinion"></contenido>
                     </articulo>
                 </seccionp>
                 <seccionp tipo_sec="deportes">
                     <articulo autor="Pablo">
-                        <contenido url="www.contenido.es/id=P0001/deportes"></contenido>
+                        <contenido url="http://www.contenido.es/id=P0001/deportes"></contenido>
                     </articulo>
                 </seccionp>
                 <seccionp tipo_sec="nacional">
                     <articulo autor="Sonia">
-                        <contenido url="www.contenido.es/id=P0001/nacional"></contenido>
+                        <contenido url="http://www.contenido.es/id=P0001/nacional"></contenido>
                     </articulo>
                 </seccionp>
                 <seccionp tipo_sec="internacional">
                     <articulo autor="Jana">
-                        <contenido url="www.contenido.es/id=P0001/internaciona"></contenido>
+                        <contenido url="http://www.contenido.es/id=P0001/internaciona"></contenido>
                     </articulo>
                 </seccionp>
             </secciones>
@@ -134,7 +136,7 @@
                     Final..............2
                 ]]>
             </indice>
-            <contenido url="www.contenido.es/id=P0001"></contenido>
+            <contenido url="http://www.contenido.es/id=P0001"></contenido>
         </periodico>
 
     </documentos>  
