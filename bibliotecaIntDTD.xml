@@ -5,15 +5,12 @@
     <!ELEMENT biblioteca (documentos)>
     
     <!ELEMENT documentos (libro*,revista*,periodico*)>
-    <!-- DOCUMENTOS -->
+    <!-- DOCUMENTOS (podrían existir otros nodos como empleados o inventario) -->
     <!-- Comunes a varios -->
     <!ELEMENT titulo (#PCDATA)>
     <!ELEMENT indice (#PCDATA)>
     <!ELEMENT contenido EMPTY>
     <!ATTLIST contenido url CDATA #REQUIRED>
-    <!ELEMENT secciones (seccionr+ | seccionp+)> <!-- Tenemos secciones para periodico o para revista -->
-    <!-- NOTA: En DTD no tenemos forma de impedir que se incluyan seccionesp dentro de una revista o viceversa -->
-    <!-- En la solución final se ha eliminado este nodo y se han usado diferentes secciones para cada elemento -->
 
     <!-- LIBRO -->
     <!ELEMENT libro (titulo, capitulo+, indice, sinopsis, contenido)>
@@ -30,7 +27,7 @@
     
     
     <!-- REVISTA -->
-    <!ELEMENT revista (titulo, numero, indice, secciones, contenido)>
+    <!ELEMENT revista (titulo, numero, indice, seccionr+, contenido)>
     <!ATTLIST revista 
         id CDATA #REQUIRED
         tipo_clase (informática | corazón | coches | investigación | otras) #REQUIRED
@@ -41,7 +38,7 @@
     <!ATTLIST seccionr paginas CDATA #REQUIRED>
 
     <!-- PERIODICO -->
-    <!ELEMENT periodico (secciones, indice, contenido)>
+    <!ELEMENT periodico (seccionp+, indice, contenido)>
     <!ATTLIST periodico 
         id CDATA #REQUIRED
         tipo_clase (nacional | internacional) #REQUIRED
@@ -90,46 +87,45 @@
                     Final..............2
                 ]]>
             </indice>
-            <secciones>
-                <seccionr paginas="12">
-                    <contenido url="http://www.contenido.es/id=R0001/sec01"></contenido>
-                </seccionr>
-                <seccionr paginas="13">
-                    <contenido url="http://www.contenido.es/id=R0001/sec02"></contenido>
-                </seccionr>
-            </secciones>
+        
+            <seccionr paginas="12">
+                <contenido url="http://www.contenido.es/id=R0001/sec01"></contenido>
+            </seccionr>
+            <seccionr paginas="13">
+                <contenido url="http://www.contenido.es/id=R0001/sec02"></contenido>
+            </seccionr>
+        
             <contenido url="http://www.contenido.es/id=R0001"></contenido>
         </revista>
 
         <!-- PERIODICO -->
         <periodico id="P0001" tipo_clase="nacional" fecha="1990-11-21">
-            <secciones>
-                <seccionp tipo_sec="económica">
-                    <articulo autor="Pedro">
-                        <contenido url="http://www.contenido.es/id=P0001/economica"></contenido>
-                    </articulo>
-                </seccionp>
-                <seccionp tipo_sec="opinión">
-                    <articulo autor="Juan">
-                        <contenido url="http://www.contenido.es/id=P0001/opinion"></contenido>
-                    </articulo>
-                </seccionp>
-                <seccionp tipo_sec="deportes">
-                    <articulo autor="Pablo">
-                        <contenido url="http://www.contenido.es/id=P0001/deportes"></contenido>
-                    </articulo>
-                </seccionp>
-                <seccionp tipo_sec="nacional">
-                    <articulo autor="Sonia">
-                        <contenido url="http://www.contenido.es/id=P0001/nacional"></contenido>
-                    </articulo>
-                </seccionp>
-                <seccionp tipo_sec="internacional">
-                    <articulo autor="Jana">
-                        <contenido url="http://www.contenido.es/id=P0001/internaciona"></contenido>
-                    </articulo>
-                </seccionp>
-            </secciones>
+        
+            <seccionp tipo_sec="económica">
+                <articulo autor="Pedro">
+                    <contenido url="http://www.contenido.es/id=P0001/economica"></contenido>
+                </articulo>
+            </seccionp>
+            <seccionp tipo_sec="opinión">
+                <articulo autor="Juan">
+                    <contenido url="http://www.contenido.es/id=P0001/opinion"></contenido>
+                </articulo>
+            </seccionp>
+            <seccionp tipo_sec="deportes">
+                <articulo autor="Pablo">
+                    <contenido url="http://www.contenido.es/id=P0001/deportes"></contenido>
+                </articulo>
+            </seccionp>
+            <seccionp tipo_sec="nacional">
+                <articulo autor="Sonia">
+                    <contenido url="http://www.contenido.es/id=P0001/nacional"></contenido>
+                </articulo>
+            </seccionp>
+            <seccionp tipo_sec="internacional">
+                <articulo autor="Jana">
+                    <contenido url="http://www.contenido.es/id=P0001/internaciona"></contenido>
+                </articulo>
+            </seccionp>
             <indice>
                 <![CDATA[
                     Inicio.............1

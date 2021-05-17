@@ -36,46 +36,42 @@
                     Final..............2
                 ]]>
             </indice>
-            <secciones>
-                <seccion paginas="12">
-                    <contenido url="http://www.contenido.es/id=R0001/sec01"></contenido>
-                </seccion>
-                <seccion paginas="13">
-                    <contenido url="http://www.contenido.es/id=R0001/sec02"></contenido>
-                </seccion>
-            </secciones>
+            <seccion paginas="12">
+                <contenido url="http://www.contenido.es/id=R0001/sec01"></contenido>
+            </seccion>
+            <seccion paginas="13">
+                <contenido url="http://www.contenido.es/id=R0001/sec02"></contenido>
+            </seccion>
             <contenido url="http://www.contenido.es/id=R0001"></contenido>
         </revista>
 
         <!-- PERIODICO -->
         <periodico id="P0001" tipo_clase="nacional" fecha="1990-11-21"> <!-- La fecha tiene el formato yyyy-mm-dd -->
-            <secciones>
-                <seccion tipo_sec="económica">
-                    <articulo autor="Pedro">
-                        <contenido url="http://www.contenido.es/id=P0001/economica"></contenido>
-                    </articulo>
-                </seccion>
-                <seccion tipo_sec="opinión">
-                    <articulo autor="Juan">
-                        <contenido url="http://www.contenido.es/id=P0001/opinion"></contenido>
-                    </articulo>
-                </seccion>
-                <seccion tipo_sec="deportes">
-                    <articulo autor="Pablo">
-                        <contenido url="http://www.contenido.es/id=P0001/deportes"></contenido>
-                    </articulo>
-                </seccion>
-                <seccion tipo_sec="nacional">
-                    <articulo autor="Sonia">
-                        <contenido url="http://www.contenido.es/id=P0001/nacional"></contenido>
-                    </articulo>
-                </seccion>
-                <seccion tipo_sec="internacional">
-                    <articulo autor="Jana">
-                        <contenido url="http://www.contenido.es/id=P0001/internaciona"></contenido>
-                    </articulo>
-                </seccion>
-            </secciones>
+            <seccion tipo_sec="económica">
+                <articulo autor="Pedro">
+                    <contenido url="http://www.contenido.es/id=P0001/economica"></contenido>
+                </articulo>
+            </seccion>
+            <seccion tipo_sec="opinión">
+                <articulo autor="Juan">
+                    <contenido url="http://www.contenido.es/id=P0001/opinion"></contenido>
+                </articulo>
+            </seccion>
+            <seccion tipo_sec="deportes">
+                <articulo autor="Pablo">
+                    <contenido url="http://www.contenido.es/id=P0001/deportes"></contenido>
+                </articulo>
+            </seccion>
+            <seccion tipo_sec="nacional">
+                <articulo autor="Sonia">
+                    <contenido url="http://www.contenido.es/id=P0001/nacional"></contenido>
+                </articulo>
+            </seccion>
+            <seccion tipo_sec="internacional">
+                <articulo autor="Jana">
+                    <contenido url="http://www.contenido.es/id=P0001/internaciona"></contenido>
+                </articulo>
+            </seccion>
             <indice>
                 <![CDATA[
                     Inicio.............1
