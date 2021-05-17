@@ -145,10 +145,10 @@
                                     <xs:attribute name="tipo_clase" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="informática" />
-                                                <xs:enumeration value="corazón" />
+                                                <xs:enumeration value="informatica" />
+                                                <xs:enumeration value="corazon" />
                                                 <xs:enumeration value="coches" />
-                                                <xs:enumeration value="investigación" />
+                                                <xs:enumeration value="investigacion" />
                                                 <xs:enumeration value="otras" />
                                             </xs:restriction>
                                         </xs:simpleType>
@@ -171,30 +171,32 @@
                                         <xs:element name="seccion" minOccurs="1" maxOccurs="unbounded"> <!-- 1 o muchos -->
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="articulo">
+                                                    <xs:element name="articulo" minOccurs="1" maxOccurs="unbounded"> <!-- 1 o muchos -->
                                                         <xs:complexType>
-                                                            <xs:sequence>
-                                                                <xs:element name="contenido">
-                                                                    <xs:complexType>
-                                                                        <xs:attribute name="url" use="optional">
-                                                                            <xs:simpleType>
-                                                                                <xs:restriction base="xs:anyURI">
-                                                                                    <xs:pattern value="(http|https)://www\..*" />
-                                                                                </xs:restriction>
-                                                                            </xs:simpleType>
-                                                                        </xs:attribute>
-                                                                    </xs:complexType>
-                                                                </xs:element>
-                                                            </xs:sequence>
-                                                            <xs:attribute name="autor" type="xs:string" use="required" />
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute name="autor" type="xs:string" use="required" />
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="contenido">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="url" use="optional">
+                                                                <xs:simpleType>
+                                                                    <xs:restriction base="xs:anyURI">
+                                                                        <xs:pattern value="(http|https)://www\..*" />
+                                                                    </xs:restriction>
+                                                                </xs:simpleType>
+                                                            </xs:attribute>
                                                         </xs:complexType>
                                                     </xs:element>
                                                 </xs:sequence>
                                                 <xs:attribute name="tipo_sec" use="required">
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:string">
-                                                            <xs:enumeration value="económica" />
-                                                            <xs:enumeration value="opinión" />
+                                                            <xs:enumeration value="economica" />
+                                                            <xs:enumeration value="opinion" />
                                                             <xs:enumeration value="deportes" />
                                                             <xs:enumeration value="nacional" />
                                                             <xs:enumeration value="internacional" />
